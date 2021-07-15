@@ -444,26 +444,3 @@ Pubspec Assist	:Ctrl + Shift + p 打开命令面板 输入：pubspec  可以将�
 Image Preview	:将光标移动到图片路径上可预览图片
 Material Icon Theme	: 分清主题各个不同类型文件 
 
-
-
-```java
-python udemy-dl.py https://www.udemy.com/course/flutter-tutorial/ -o ../ue5 -q 1080
-
-python udemy-dl.py https://www.udemy.com/course/kang-flutter-shop/ -o ../ue5 -q 1080
-
-点到课程介绍中取复制网址
-
-python udemy-dl.py 课程地址 -o 保存路径 -q 清晰度 -c 章节
-    
-learn@iplusmail.com
-
-qweqwe123!@#
-    
-异常的话 断开vpn和wifi重新连接一遍
-    
-    
-ec2-16-162-101-84.ap-east-1.compute.amazonaws.com
-
-Jkc.nmC.z-2G!RiFgNFR%ioLsQFVgjag
-```
-
