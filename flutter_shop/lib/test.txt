@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_shop/utils/router_util.dart';
+import 'package:flutter_shop/widgets/big_button.dart';
+import 'package:flutter_shop/widgets/circle_check_box.dart';
+import 'package:flutter_shop/widgets/item_text_field.dart';
+import 'package:flutter_shop/widgets/logo_container.dart';
+import 'package:flutter_shop/widgets/medium_button.dart';
+import 'package:flutter_shop/widgets/show_message.dart';
+import 'package:flutter_shop/widgets/small_button.dart';
+import 'package:flutter_shop/call/call.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: Size(650, 960),
+      builder: () => MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+      ),
+    );
+  }
+}
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool checkValue = false;
+
+  @override
+  void initState() {
+    Call.addCallBack("test", callback);
+  }
+
+  callback(data) {
+    print(data['name']);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("test widget"),
+      ),
+      body: Center(
+        child: Container(
+          child: Column(children: [
+            LogoContainer(),
+            SizedBox(height: 50.0),
+            ItemTextField(
+              icon: Icon(
+                Icons.person,
+              ),
+              controller: TextEditingController(),
+              focusNode: FocusNode(),
+              title: "用户名",
+              hintText: "请输入用户名",
+              obscureText: false,
+            ),
+            SizedBox(height: 30.0),
+            CircleCheckBox(
+              value: checkValue,
+              onChanged: (val) {
+                this.setState(() {
+                  checkValue = val;
+                });
+              },
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmallButton(
+                    text: "结算",
+                    onPressed: () {
+                      MessageWidget.show("haha");
+                      print("small button");
+                    }),
+                SizedBox(width: 10.0),
+                SmallButton(
+                    text: "登录",
+                    onPressed: () {
+                      RouterUtil.toLoginPage(context, "admin");
+                    }),
+              ],
+            ),
+            SizedBox(height: 30.0),
+            MediumButton(
+              text: "加入购物车",
+              color: Colors.red,
+              onPressed: () {
+                Call.dispath("test", data: {"name": "ella", "islogin": true});
+              },
+            ),
+            SizedBox(height: 30.0),
+            BigButton(
+              text: "提交",
+              onPressed: () {
+                print("big button");
+              },
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+}
