@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'good_detail_model.g.dart';
+
 /// 商品详情数据模型
+@JsonSerializable()
 class GoodDetailModel {
   //Id
   int? id;
@@ -33,30 +38,9 @@ class GoodDetailModel {
   });
 
   ///取Json数据
-  GoodDetailModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    price = json['price'];
-    discount_price = json['discount_price'];
-    count = json['count'];
-    good_sn = json['good_sn'];
-    fright = json['fright'];
-    images = json['images'];
-    detail = json['detail'];
-  }
+  factory GoodDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$GoodDetailModelFromJson(json);
 
   ///将数据转成Json
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['discount_price'] = this.discount_price;
-    data['count'] = this.count;
-    data['good_sn'] = this.good_sn;
-    data['fright'] = this.fright;
-    data['images'] = this.images;
-    data['detail'] = this.detail;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$GoodDetailModelToJson(this);
 }

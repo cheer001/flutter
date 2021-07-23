@@ -77,10 +77,21 @@ flutter create 项目名(单词全小写，多个单词之间用下划线连接)
 
 #### Flutter常用命令
 
-`flutter run`
-p :显示网格
-o :切换为ios
-q :退出项目
+`flutter clean` 清空项目中的依赖包
+
+`flutter pub get` 从pub.dev下载依赖包
+
+`flutter pub add 包名 ` (推荐使用) 下载项目适合的包
+
+`flutter run` 运行项目
+
+* p :显示网格
+* o :切换为ios
+* q :退出项目
+
+ `flutter build apk` 打包项目为.apk文件
+
+`flutter install` 安装项目apk到目标设备
 
 #### Flutter项目代码结构
 
@@ -262,15 +273,63 @@ Stateful：
 
 * 一般我们调用接口获取数据都会转成Json对象在项目中使用，但是在转换Json对象进行属性赋值时很容易敲错字段，所以dart提供了Json Model化
 
-  1. 预定义一些json结构对应的model类
-  2. 请求到数据后再动态根据数据创建出Model类的实例
-
-* 插件
+  1. 安装需要的依赖包
 
   ```
-  #自动化的源代码生成器
-  json_serializable: ^4.1.3
+  dependencies:
+    #序列化json对象
+    json_serializable: ^4.1.0
+    json_annotation: ^4.0.1
+  dev_dependencies:
+    #自动生成Model
+    build_runner: ^1.0.0
   ```
+
+  2. 定义一些json结构对应的model类
+
+     ```dart
+     import 'package:json_annotation/json_annotation.dart';
+     
+     //这里写  文件名.g.dart  *
+     part 'user_model.g.dart';
+     
+     /// 用户数据模型
+     @JsonSerializable()
+     class UserModel {
+       //Id
+       int? id;
+       //Token值
+       String? token;
+       //用户名
+       String? username;
+       //手机号
+       String? mobile;
+       //用户头像
+       String? head_image;
+       //用户地址
+       String? address;
+     
+       ///构造函数
+       UserModel({
+         required this.id,
+         required this.token,
+         required this.username,
+       });
+     
+       ///取Json数据  *  _$类名FromJson(json);
+       factory UserModel.fromJson(Map<String, dynamic> json) =>
+           _$UserModelFromJson(json);
+     
+       ///将数据转成Json  *  _$类名ToJson(this);
+       Map<String, dynamic> toJson() => _$UserModelToJson(this);
+     }
+     
+     ```
+
+  3. 上面的模板代码写完后我标有(*)的位置会出现编译错误，是因为还没生成User类对应的序列化模板
+     `flutter packages pub run build_runner build`
+
+     运行完后会在user_model.dart所在目录下生成user_model.g.dart文件
 
 * 实现接口字段名与项目中时段名不一样时，关联JSON字段名与Model属性的对应关系 
 

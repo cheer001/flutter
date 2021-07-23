@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'category_model.g.dart';
+
 /// 分类列表数据模型
+@JsonSerializable()
 class CategoryListModel {
   /// 分类数据列表
   List<CategoryModel>? categoryList = List<CategoryModel>.empty(growable: true);
@@ -6,21 +11,15 @@ class CategoryListModel {
   CategoryListModel({required this.categoryList});
 
   /// 从响应数据中取Json数据
-  CategoryListModel.fromJson(Map<String, dynamic> json) {
-    json['list']?.forEach((v) {
-      categoryList?.add(CategoryModel.fromJson(v));
-    });
-  }
+  factory CategoryListModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryListModelFromJson(json);
 
   /// 将数据转成Json对象
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['list'] = this.categoryList?.map((v) => v.toJson()).toList();
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$CategoryListModelToJson(this);
 }
 
 /// 分类数据模型
+@JsonSerializable()
 class CategoryModel {
   /// ID
   int? id;
@@ -46,22 +45,9 @@ class CategoryModel {
   });
 
   /// 从响应数据中取Json数据
-  CategoryModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    pid = json['pid'];
-    level = json['level'];
-    image = json['image'];
-  }
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
 
   /// 将数据转成Json对象
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['pid'] = this.pid;
-    data['level'] = this.level;
-    data['image'] = this.image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 }

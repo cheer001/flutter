@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'home_content_model.g.dart';
+
 /// 主页内容模型类
+@JsonSerializable()
 class HomeContentModel {
   List<HomeBannerModel>? banners = List<HomeBannerModel>.empty(growable: true);
   List<HomeCategoryModel>? categories =
@@ -10,45 +15,26 @@ class HomeContentModel {
     required this.categories,
     required this.goods,
   });
-  HomeContentModel.fromJson(Map<String, dynamic> json) {
-    print('json :$json');
-    json['banners']?.forEach((v) {
-      banners!.add(HomeBannerModel.fromJson(v));
-    });
-    json['category']?.forEach((v) {
-      categories!.add(HomeCategoryModel.fromJson(v));
-    });
-    json['goods']?.forEach((v) {
-      goods!.add(HomeGoodModel.fromJson(v));
-    });
-  }
+  factory HomeContentModel.fromJson(Map<String, dynamic> json) =>
+      _$HomeContentModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['banners'] = this.banners?.map((v) => v.toJson()).toList();
-    data['category'] = this.categories?.map((v) => v.toJson()).toList();
-    data['goods'] = this.goods?.map((v) => v.toJson()).toList();
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$HomeContentModelToJson(this);
 }
 
-///
+/// 轮播图模型类
+@JsonSerializable()
 class HomeBannerModel {
   String? image;
   HomeBannerModel({required this.image});
 
-  HomeBannerModel.fromJson(Map<String, dynamic> json) {
-    image = json["image"];
-  }
+  factory HomeBannerModel.fromJson(Map<String, dynamic> json) =>
+      _$HomeBannerModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data["image"] = this.image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$HomeBannerModelToJson(this);
 }
 
 /// 商品模型类
+@JsonSerializable()
 class HomeGoodModel {
   int? id;
 
@@ -76,28 +62,14 @@ class HomeGoodModel {
     required this.images,
   });
 
-  HomeGoodModel.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
-    price = json["price"];
-    discount_price = json["discount_price"];
-    name = json["name"];
-    good_sn = json["good_sn"];
-    images = json["images"];
-  }
+  factory HomeGoodModel.fromJson(Map<String, dynamic> json) =>
+      _$HomeGoodModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data["id"] = this.id;
-    data["price"] = this.price;
-    data["discount_price"] = this.discount_price;
-    data["name"] = this.name;
-    data["good_sn"] = this.good_sn;
-    data["images"] = this.images;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$HomeGoodModelToJson(this);
 }
 
 /// 商品模型类
+@JsonSerializable()
 class HomeCategoryModel {
   int? id;
   String? name; //名称
@@ -112,21 +84,8 @@ class HomeCategoryModel {
     required this.image,
   });
 
-  HomeCategoryModel.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
-    name = json["name"];
-    pid = json["pid"];
-    level = json["level"];
-    image = json["image"];
-  }
+  factory HomeCategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$HomeCategoryModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data["id"] = this.id;
-    data["name"] = this.name;
-    data["pid"] = this.pid;
-    data["level"] = this.level;
-    data["image"] = this.image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$HomeCategoryModelToJson(this);
 }

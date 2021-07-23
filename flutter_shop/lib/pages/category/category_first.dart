@@ -32,8 +32,8 @@ class _CategoryFirstState extends State<CategoryFirst> {
     print(response.data["data"]['list']);
     CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
     this.setState(() {
-      firstList = model.categoryList!;
-      firstCategoryId = model.categoryList![0].id!; //默认显示第一条数据
+      firstList = model.categoryList ?? [];
+      firstCategoryId = model.categoryList?[0].id ?? 0; //默认显示第一条数据
     });
 
     // 刷新一级菜单选中的页面

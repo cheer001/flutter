@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'category_good_model.g.dart';
+
 /// 分类商品列表数据模型
+@JsonSerializable()
 class CategoryGoodListModel {
   List<CategoryGoodModel> categoryGoodList =
       List<CategoryGoodModel>.empty(growable: true);
@@ -6,21 +11,15 @@ class CategoryGoodListModel {
   CategoryGoodListModel({required this.categoryGoodList});
 
   /// 从响应数据中取Json数据
-  CategoryGoodListModel.fromJson(Map<String, dynamic> json) {
-    json['list']?.forEach(
-      (v) => categoryGoodList.add(CategoryGoodModel.fromJson(v)),
-    );
-  }
+  factory CategoryGoodListModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryGoodListModelFromJson(json);
 
   /// 将Model数据转成Json
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['list'] = this.categoryGoodList.map((v) => v.toString()).toList();
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$CategoryGoodListModelToJson(this);
 }
 
 /// 分类商品数据模型
+@JsonSerializable()
 class CategoryGoodModel {
   /// ID
   int? id;
@@ -54,26 +53,9 @@ class CategoryGoodModel {
   });
 
   /// 从响应数据中取Json数据
-  CategoryGoodModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    price = json['price'];
-    discount_price = json['discount_price'];
-    good_sn = json['good_sn'];
-    images = json['images'];
-    count = json['count'];
-  }
+  factory CategoryGoodModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryGoodModelFromJson(json);
 
   /// 将Model数据转成Json
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['discount_price'] = this.discount_price;
-    data['good_sn'] = this.good_sn;
-    data['images'] = this.images;
-    data['count'] = this.count;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$CategoryGoodModelToJson(this);
 }

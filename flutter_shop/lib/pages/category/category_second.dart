@@ -38,11 +38,11 @@ class _CategorySecondState extends State<CategorySecond> {
         .get(ApiUrl.CATEGORY_SECOND, queryParameters: {'pid': id});
     print(response.data["data"]['list']);
     CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
-    if (model.categoryList!.length > 0) {
-      var secondId = model.categoryList![0].id;
+    if (model.categoryList != null) {
+      var secondId = model.categoryList?[0].id;
       setState(() {
-        secondList = model.categoryList!;
-        secondCategoryId = secondId!;
+        secondList = model.categoryList ?? [];
+        secondCategoryId = secondId ?? 0;
       });
     } else {
       this.setState(() {

@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.3
   #屏幕适配组件
   flutter_screenutil: ^5.0.0+2
   #提示组件
@@ -29,9 +29,13 @@ dependencies:
   #展示详情组件
   flutter_html: ^2.1.0
 
+  #序列化json对象
+  json_serializable: ^4.1.4
+  json_annotation: ^4.0.1
+
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  #自动生成Model
+  build_runner: ^2.0.6
 
 flutter:
   uses-material-design: true

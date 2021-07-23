@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user_model.g.dart';
+
 /// 用户数据模型
+@JsonSerializable()
 class UserModel {
   //Id
   int? id;
@@ -21,23 +26,9 @@ class UserModel {
   });
 
   ///取Json数据
-  UserModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    token = json['token'];
-    username = json['username'];
-    mobile = json['mobile'];
-    head_image = json['head_image'];
-    address = json['address'];
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
   ///将数据转成Json
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['token'] = this.token;
-    data['username'] = this.username;
-    data['mobile'] = this.mobile;
-    data['head_image'] = this.head_image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }
