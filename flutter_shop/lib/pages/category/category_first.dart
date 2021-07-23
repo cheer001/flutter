@@ -29,6 +29,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
   getFirstCategory() async {
     var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD))
         .get(ApiUrl.CATEGORY_FIRST);
+    print("firstList--->");
     print(response.data["data"]['list']);
     CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
     this.setState(() {

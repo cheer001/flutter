@@ -36,6 +36,7 @@ class _CategorySecondState extends State<CategorySecond> {
   getFirstCategory(int id) async {
     var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD))
         .get(ApiUrl.CATEGORY_SECOND, queryParameters: {'pid': id});
+    print('secondList--->');
     print(response.data["data"]['list']);
     CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
     if (model.categoryList != null) {

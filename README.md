@@ -339,7 +339,6 @@ Stateful：
   final int registrationDateMillis;
   ```
 
-  
 
 ##### 常用插件
 
@@ -503,3 +502,13 @@ Pubspec Assist	:Ctrl + Shift + p 打开命令面板 输入：pubspec  可以将�
 Image Preview	:将光标移动到图片路径上可预览图片
 Material Icon Theme	: 分清主题各个不同类型文件 
 
+#### 项目实战Q&A
+
+##### 接口响应数据与model对接 问题处理
+
+* 接口返回的数组名与生成的model类中名称对应不上会导致json数据解析失败
+
+##### 运行问题
+
+* INSTALL_FAILED_INSUFFICIENT_STORAGE
+  虚拟机内存空间不足，可以先换一个虚拟机

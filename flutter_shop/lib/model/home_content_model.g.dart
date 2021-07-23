@@ -11,7 +11,7 @@ HomeContentModel _$HomeContentModelFromJson(Map<String, dynamic> json) {
     banners: (json['banners'] as List<dynamic>?)
         ?.map((e) => HomeBannerModel.fromJson(e as Map<String, dynamic>))
         .toList(),
-    categories: (json['categories'] as List<dynamic>?)
+    categories: (json['category'] as List<dynamic>?)
         ?.map((e) => HomeCategoryModel.fromJson(e as Map<String, dynamic>))
         .toList(),
     goods: (json['goods'] as List<dynamic>?)

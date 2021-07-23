@@ -9,8 +9,8 @@ part of 'category_good_model.dart';
 CategoryGoodListModel _$CategoryGoodListModelFromJson(
     Map<String, dynamic> json) {
   return CategoryGoodListModel(
-    categoryGoodList: (json['categoryGoodList'] as List<dynamic>)
-        .map((e) => CategoryGoodModel.fromJson(e as Map<String, dynamic>))
+    categoryGoodList: (json['list'] as List<dynamic>)
+        .map((e) => CategoryGoodModel?.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }
