@@ -1,8 +1,3 @@
-// import 'dart:convert';
-
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/home_content_model.dart';
@@ -10,9 +5,8 @@ import 'package:flutter_shop/pages/home/home_banner.dart';
 import 'package:flutter_shop/pages/home/home_category.dart';
 import 'package:flutter_shop/pages/home/home_good.dart';
 import 'package:flutter_shop/utils/http_util.dart';
-// import 'package:flutter_shop/services/http_service.dart';
-// import 'package:flutter_shop/utils/http_util.dart';
 
+/// 首页
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -34,9 +28,9 @@ class _HomePageState extends State<HomePage>
   }
 
   initData() async {
-    var response = await HttpUtil().get(ApiUrl.HOME_CONTENT);
+    var response = await HttpUtil().get(ApiUrl.HOME_CONTENT, isShowLoad: true);
     this.setState(() {
-      _homeModel = HomeContentModel.fromJson(response!['data']);
+      _homeModel = HomeContentModel.fromJson(response['data']);
     });
   }
 
@@ -46,21 +40,21 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       appBar: AppBar(
-        title: Text(SString.HOME_TITLE),
+        title: Text(TextString.HOME_TITLE),
         centerTitle: true,
       ),
-      body: _homeModel == null
-          ? Container(
-              child: Center(
-                child: Text("暂无数据"),
-              ),
-            )
-          : ListView(
+      body: _homeModel != null
+          ? ListView(
               children: [
                 HomeBanner(banners: _homeModel?.banners ?? []),
                 HomeCategory(categories: _homeModel?.categories ?? []),
                 HomeGood(goods: _homeModel!.goods ?? []),
               ],
+            )
+          : Container(
+              child: Center(
+                child: Text("暂无数据"),
+              ),
             ),
     );
   }

@@ -12,7 +12,7 @@ class LogoContainer extends StatelessWidget {
       width: width,
       height: height,
       // color: Colors.grey[300],
-      color: SColor.PRIMARY_COLOR,
+      color: ShopColor.PRIMARY_COLOR,
       child: Stack(
         clipBehavior: Clip.none,
         children: [

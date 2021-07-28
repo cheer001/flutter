@@ -4,6 +4,7 @@ import 'package:flutter_shop/model/home_content_model.dart';
 import 'package:flutter_shop/utils/color_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 
+/// 首页最新商品
 class HomeGood extends StatefulWidget {
   List<HomeGoodModel> goods;
   HomeGood({Key? key, required this.goods}) : super(key: key);
@@ -71,7 +72,7 @@ class _HomeGoodState extends State<HomeGood> {
                         Text(
                           '￥${item.discount_price}',
                           style: TextStyle(
-                            color: SColor.PRICE_TEXT_COLOR,
+                            color: ShopColor.PRICE_TEXT_COLOR,
                           ),
                         ),
                         SizedBox(width: 7),
@@ -97,8 +98,8 @@ class _HomeGoodState extends State<HomeGood> {
           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
           alignment: Alignment.center,
           child: Text(
-            SString.NEW_GOOD_TITLE,
-            style: TextStyle(color: SColor.HOME_SUB_TITLE_COLOR),
+            TextString.NEW_GOOD_TITLE,
+            style: TextStyle(color: ShopColor.HOME_SUB_TITLE_COLOR),
           ),
         ),
         Wrap(

@@ -69,8 +69,8 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
       'page_index': pageIndex,
       'page_size': pageSize
     };
-    var response =
-        await HttpUtil().get(ApiUrl.CATEGORY_GOOD_LIST, params: param);
+    var response = await HttpUtil()
+        .get(ApiUrl.CATEGORY_GOOD_LIST, params: param, isShowLoad: true);
     CategoryGoodListModel model =
         CategoryGoodListModel.fromJson(response['data']);
     this.setState(() {
@@ -83,7 +83,7 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(SString.GOOD_LIST_TITLE),
+        title: Text(TextString.GOOD_LIST_TITLE),
       ),
       body: goodList.length > 0
           ? Container(
@@ -161,7 +161,7 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
                 ],
               ),
             )
-          : Center(child: Text(SString.NO_MORE_DATA)),
+          : Center(child: Text(TextString.NO_MORE_DATA)),
     );
   }
 
@@ -202,7 +202,7 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border(
-            bottom: BorderSide(width: 1.0, color: SColor.BORDER_COLOR),
+            bottom: BorderSide(width: 1.0, color: ShopColor.BORDER_COLOR),
           ),
         ),
         child: Row(
@@ -252,8 +252,8 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
       child: Row(
         children: [
           Text(
-            SString.GOOD_LIST_PRICE + '${list[index].discount_price!}',
-            style: TextStyle(color: SColor.PRICE_TEXT_COLOR),
+            TextString.GOOD_LIST_PRICE + '${list[index].discount_price!}',
+            style: TextStyle(color: ShopColor.PRICE_TEXT_COLOR),
           ),
           Text(
             '￥${list[index].price!}',

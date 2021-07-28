@@ -1,4 +1,5 @@
-class SString {
+/// 文本字符串
+class TextString {
   static const String MAIN_TITLE = 'Flutter电子商城';
   static const String HOME_TITLE = '首页';
   static const String CATEGORY_TITLE = '分类';

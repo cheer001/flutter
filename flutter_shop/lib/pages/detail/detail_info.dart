@@ -58,9 +58,9 @@ class _DetailInfoState extends State<DetailInfo> {
       padding: EdgeInsets.only(left: 15.0),
       margin: EdgeInsets.only(top: 8.0),
       child: Text(
-        SString.GOOD_SN,
+        TextString.GOOD_SN,
         maxLines: 1,
-        style: TextStyle(color: SColor.GOOD_SN_COLOR),
+        style: TextStyle(color: ShopColor.GOOD_SN_COLOR),
       ),
     );
   }
@@ -75,14 +75,14 @@ class _DetailInfoState extends State<DetailInfo> {
           Text(
             '￥$discountPrice',
             style: TextStyle(
-                color: SColor.PRICE_TEXT_COLOR,
+                color: ShopColor.PRICE_TEXT_COLOR,
                 fontSize: ScreenUtil().setSp(40)),
           ),
           SizedBox(width: 5),
           Text(
-            SString.ORI_PRICE + '$price',
+            TextString.ORI_PRICE + '$price',
             style: TextStyle(
-              color: SColor.OLD_PRICE_COLOR,
+              color: ShopColor.OLD_PRICE_COLOR,
               decoration: TextDecoration.lineThrough,
             ),
           ),

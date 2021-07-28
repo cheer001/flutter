@@ -93,7 +93,7 @@ class _MemberPageState extends State<MemberPage> {
                             RouterUtil.toLoginPage(context);
                           },
                           child: Text(
-                            SString.LOGIN_OR_REGISTER,
+                            TextString.LOGIN_OR_REGISTER,
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -112,12 +112,12 @@ class _MemberPageState extends State<MemberPage> {
               Icons.assessment,
               color: Colors.blue,
             ),
-            title: Text(SString.ALL_ORDER),
+            title: Text(TextString.ALL_ORDER),
             onTap: () {
               if (isLogin) {
                 /// TODO 跳转至我的订单页面
               } else {
-                MessageWidget.show(SString.PLEASE_LOGIN);
+                MessageWidget.show(TextString.PLEASE_LOGIN);
               }
             },
           ),
@@ -127,7 +127,7 @@ class _MemberPageState extends State<MemberPage> {
               Icons.favorite,
               color: Colors.redAccent,
             ),
-            title: Text(SString.MY_COLLECT),
+            title: Text(TextString.MY_COLLECT),
           ),
           Divider(),
           ListTile(
@@ -135,7 +135,7 @@ class _MemberPageState extends State<MemberPage> {
               Icons.attach_money,
               color: Colors.redAccent,
             ),
-            title: Text(SString.MY_COUPON),
+            title: Text(TextString.MY_COUPON),
           ),
           Container(
             width: double.infinity,
@@ -147,7 +147,7 @@ class _MemberPageState extends State<MemberPage> {
               Icons.phone_in_talk,
               color: Colors.green,
             ),
-            title: Text(SString.ONLINE_SERVICE),
+            title: Text(TextString.ONLINE_SERVICE),
           ),
           Divider(),
           ListTile(
@@ -155,13 +155,13 @@ class _MemberPageState extends State<MemberPage> {
               Icons.info,
               color: Colors.black54,
             ),
-            title: Text(SString.ABOUT_US),
+            title: Text(TextString.ABOUT_US),
           ),
           Divider(),
           SizedBox(height: 60),
           this.isLogin
               ? BigButton(
-                  text: SString.LOGOUT_TITLE,
+                  text: TextString.LOGOUT_TITLE,
                   onPressed: () {
                     TokenUtil.clearUserInfo();
                     this.setState(() {

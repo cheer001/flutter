@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/model/home_content_model.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 
+/// 首页分类商品
 class HomeCategory extends StatelessWidget {
   List<HomeCategoryModel> categories;
   HomeCategory({Key? key, required this.categories}) : super(key: key);

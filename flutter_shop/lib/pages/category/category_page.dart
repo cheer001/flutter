@@ -13,7 +13,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(SString.CATEGORY_TITLE),
+        title: Text(TextString.CATEGORY_TITLE),
         centerTitle: true,
       ),
       body: Center(

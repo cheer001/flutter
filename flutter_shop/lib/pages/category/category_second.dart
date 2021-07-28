@@ -34,8 +34,11 @@ class _CategorySecondState extends State<CategorySecond> {
   }
 
   getFirstCategory(int id) async {
-    var response =
-        await HttpUtil().get(ApiUrl.CATEGORY_SECOND, params: {'pid': id});
+    var response = await HttpUtil().get(ApiUrl.CATEGORY_SECOND,
+        params: {
+          'pid': id,
+        },
+        isShowLoad: true);
     CategoryListModel model = CategoryListModel.fromJson(response["data"]);
     if (model.categoryList!.isNotEmpty) {
       var secondId = model.categoryList?[0].id;

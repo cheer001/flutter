@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/good_detail_model.dart';
@@ -44,7 +45,7 @@ class _GoodDetailPageState extends State<GoodDetailPage> {
             RouterUtil.pop(context);
           },
         ),
-        title: Text(SString.GOOD_DETAIL_TITLE),
+        title: Text(TextString.GOOD_DETAIL_TITLE),
       ),
       body: goodDetailModel != null
           ? Stack(
@@ -66,7 +67,7 @@ class _GoodDetailPageState extends State<GoodDetailPage> {
                 )
               ],
             )
-          : Text(SString.LOADING),
+          : Text(TextString.LOADING),
     ));
   }
 }

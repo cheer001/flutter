@@ -78,7 +78,8 @@ class _CategoryFirstState extends State<CategoryFirst> {
           border: Border(
             bottom: BorderSide(
               width: 1,
-              color: isSelected ? SColor.PRIMARY_COLOR : Colors.grey.shade200,
+              color:
+                  isSelected ? ShopColor.PRIMARY_COLOR : Colors.grey.shade200,
             ),
           ),
         ),
@@ -86,7 +87,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
         child: Text(
           list[index].name!,
           style: TextStyle(
-            color: isSelected ? SColor.PRIMARY_COLOR : Colors.black,
+            color: isSelected ? ShopColor.PRIMARY_COLOR : Colors.black,
             fontSize: ScreenUtil().setSp(28),
           ),
           textDirection: TextDirection.rtl,

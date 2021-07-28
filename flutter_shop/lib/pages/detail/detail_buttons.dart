@@ -31,20 +31,20 @@ class DetailButtons extends StatelessWidget {
             child: Icon(
               Icons.shopping_cart,
               size: 35,
-              color: SColor.PRIMARY_COLOR,
+              color: ShopColor.PRIMARY_COLOR,
             ),
           ),
           MediumButton(
-            text: SString.ADD_TO_CART,
-            color: SColor.ADD_TO_CART_COLOR,
+            text: TextString.ADD_TO_CART,
+            color: ShopColor.ADD_TO_CART_COLOR,
             onPressed: () {
               addGoodToCart(context);
             },
           ),
           SizedBox(width: 20, height: 70),
           MediumButton(
-            text: SString.BUY_GOOD,
-            color: SColor.BUY_NOW_BUTTON_COLOR,
+            text: TextString.BUY_GOOD,
+            color: ShopColor.BUY_NOW_BUTTON_COLOR,
             onPressed: () {},
           ),
         ],
@@ -68,7 +68,7 @@ class DetailButtons extends StatelessWidget {
     };
     var response = await HttpUtil().post(ApiUrl.CART_ADD, params: data);
     if (response.data['code'] == 0) {
-      MessageWidget.show(SString.ADD_SUCCESS);
+      MessageWidget.show(TextString.ADD_SUCCESS);
       // TODO 购物车刷新
     }
   }

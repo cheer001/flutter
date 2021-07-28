@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/model/home_content_model.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 
+/// 首页轮播
 class HomeBanner extends StatelessWidget {
   List<HomeBannerModel> banners;
   HomeBanner({Key? key, required this.banners}) : super(key: key);

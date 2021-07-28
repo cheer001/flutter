@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/pages/main_page.dart';
@@ -13,12 +14,13 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: Size(750, 1334),
       builder: () => MaterialApp(
-        title: SString.MAIN_TITLE,
+        title: TextString.MAIN_TITLE,
         theme: ThemeData(
           primarySwatch: Colors.green,
         ),
         debugShowCheckedModeBanner: false,
         home: MainPage(),
+        builder: EasyLoading.init(),
       ),
     );
   }

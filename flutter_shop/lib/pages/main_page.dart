@@ -15,19 +15,19 @@ class _MainPageState extends State<MainPage> {
   List<BottomNavigationBarItem> _tabs = [
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      label: SString.HOME_TITLE,
+      label: TextString.HOME_TITLE,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.category),
-      label: SString.CATEGORY_TITLE,
+      label: TextString.CATEGORY_TITLE,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.shopping_cart),
-      label: SString.CART_TITLE,
+      label: TextString.CART_TITLE,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: SString.MENMBER_TITLE,
+      label: TextString.MENMBER_TITLE,
     ),
   ];
 

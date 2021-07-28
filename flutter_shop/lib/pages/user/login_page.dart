@@ -40,9 +40,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: SColor.PRIMARY_COLOR,
+        backgroundColor: ShopColor.PRIMARY_COLOR,
         elevation: 0,
-        title: Text(SString.LOGIN_TITLE),
+        title: Text(TextString.LOGIN_TITLE),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -68,8 +68,8 @@ class _LoginPageState extends State<LoginPage> {
             icon: Icon(Icons.person),
             controller: userNameController!,
             focusNode: userNameNode,
-            title: SString.USERNAME,
-            hintText: SString.PLEASE_INPUT_NAME,
+            title: TextString.USERNAME,
+            hintText: TextString.PLEASE_INPUT_NAME,
             obscureText: false,
           ),
           SizedBox(height: 20.0),
@@ -77,8 +77,8 @@ class _LoginPageState extends State<LoginPage> {
             icon: Icon(Icons.lock),
             controller: pwdController!,
             focusNode: pwdNode,
-            title: SString.PASSWORD,
-            hintText: SString.PLEASE_INPUT_PWD,
+            title: TextString.PASSWORD,
+            hintText: TextString.PLEASE_INPUT_PWD,
             obscureText: true,
           ),
           Row(
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: 50.0),
           BigButton(
-              text: SString.LOGIN_TITLE,
+              text: TextString.LOGIN_TITLE,
               onPressed: () {
                 if (checkInput()) {
                   this.login();
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: InkWell(
         child: Text(
-          SString.FORGET_PASSWORD,
+          TextString.FORGET_PASSWORD,
           style: TextStyle(
               color: Colors.black, fontSize: ScreenUtil().setSp(28.0)),
         ),
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
           RouterUtil.toRegisterPage(context);
         },
         child: Text(
-          SString.FAST_REGISTER,
+          TextString.FAST_REGISTER,
           style:
               TextStyle(color: Colors.blue, fontSize: ScreenUtil().setSp(28.0)),
         ),
@@ -139,10 +139,10 @@ class _LoginPageState extends State<LoginPage> {
   /// 检查输入操作
   bool checkInput() {
     if (userNameController?.text.length == 0) {
-      MessageWidget.show(SString.PLEASE_INPUT_NAME);
+      MessageWidget.show(TextString.PLEASE_INPUT_NAME);
       return false;
     } else if (pwdController?.text.length == 0) {
-      MessageWidget.show(SString.PLEASE_INPUT_PWD);
+      MessageWidget.show(TextString.PLEASE_INPUT_PWD);
       return false;
     }
     return true;
@@ -156,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
     var response = await HttpUtil().post(ApiUrl.USER_LOGIN, params: formData);
     if (response['code'] == 0) {
       UserModel model = UserModel.fromJson(response.data['data']);
-      MessageWidget.show(SString.LOGIN_SUCCESS);
+      MessageWidget.show(TextString.LOGIN_SUCCESS);
       await TokenUtil.saveLoginInfo(model);
       var data = {
         'username': model.username,
@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
       Call.dispath(Notify.LOGIN_STATUS, data: data);
       RouterUtil.pop(context);
     } else {
-      MessageWidget.show(SString.LOGIN_FAILED);
+      MessageWidget.show(TextString.LOGIN_FAILED);
       var data = {
         'username': '',
         'isLogin': false,

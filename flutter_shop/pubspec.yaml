@@ -33,6 +33,9 @@ dependencies:
   json_serializable: ^4.1.4
   json_annotation: ^4.0.1
 
+  #loading
+  flutter_easyloading: ^3.0.0
+
 dev_dependencies:
   #自动生成Model
   build_runner: ^2.0.6

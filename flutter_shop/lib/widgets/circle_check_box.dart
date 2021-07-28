@@ -30,7 +30,7 @@ class _CircleCheckBoxState extends State<CircleCheckBox> {
               ? Icon(
                   Icons.check_circle,
                   size: 28.0,
-                  color: SColor.CHECKBOX_COLOR,
+                  color: ShopColor.CHECKBOX_COLOR,
                 )
               : Icon(
                   Icons.panorama_fish_eye,

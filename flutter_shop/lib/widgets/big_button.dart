@@ -24,7 +24,7 @@ class BigButton extends StatelessWidget {
           this.onPressed();
         },
         child: Text(this.text),
-        color: SColor.PRIMARY_COLOR,
+        color: ShopColor.PRIMARY_COLOR,
         textColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(

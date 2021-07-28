@@ -26,7 +26,7 @@ class SmallButton extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: SColor.BUY_BUTTON_COLOR,
+            color: ShopColor.BUY_BUTTON_COLOR,
             borderRadius: BorderRadius.circular(3.0),
           ),
           child: Text(

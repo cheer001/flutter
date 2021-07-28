@@ -44,9 +44,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: SColor.PRIMARY_COLOR,
+        backgroundColor: ShopColor.PRIMARY_COLOR,
         elevation: 0,
-        title: Text(SString.REGISTER_TITLE),
+        title: Text(TextString.REGISTER_TITLE),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -68,47 +68,47 @@ class _RegisterPageState extends State<RegisterPage> {
       margin: EdgeInsets.only(left: 15, right: 15),
       child: Column(
         children: [
-          itemTitle(SString.USER_NAME),
+          itemTitle(TextString.USER_NAME),
           SizedBox(height: 5.0),
           ItemTextField(
             icon: Icon(Icons.person),
             controller: userNameController,
             focusNode: userNameNode,
-            title: SString.USERNAME,
-            hintText: SString.PLEASE_INPUT_NAME,
+            title: TextString.USERNAME,
+            hintText: TextString.PLEASE_INPUT_NAME,
             obscureText: false,
           ),
           SizedBox(height: 10.0),
-          itemTitle(SString.MOBILE),
+          itemTitle(TextString.MOBILE),
           SizedBox(height: 5.0),
           ItemTextField(
             icon: Icon(Icons.phone),
             controller: mobileController,
             focusNode: mobileNode,
-            title: SString.MOBILE,
-            hintText: SString.PLEASE_INPUT_MOBILE,
+            title: TextString.MOBILE,
+            hintText: TextString.PLEASE_INPUT_MOBILE,
             obscureText: false,
           ),
           SizedBox(height: 10.0),
-          itemTitle(SString.PASSWORD),
+          itemTitle(TextString.PASSWORD),
           SizedBox(height: 5.0),
           ItemTextField(
             icon: Icon(Icons.lock),
             controller: pwdController,
             focusNode: pwdNode,
-            title: SString.PASSWORD,
-            hintText: SString.PLEASE_INPUT_PWD,
+            title: TextString.PASSWORD,
+            hintText: TextString.PLEASE_INPUT_PWD,
             obscureText: true,
           ),
           SizedBox(height: 10.0),
-          itemTitle(SString.ADDRESS),
+          itemTitle(TextString.ADDRESS),
           SizedBox(height: 5.0),
           ItemTextField(
             icon: Icon(Icons.home),
             controller: addressController,
             focusNode: addressNode,
-            title: SString.ADDRESS,
-            hintText: SString.PLEASE_INPUT_ADDRESS,
+            title: TextString.ADDRESS,
+            hintText: TextString.PLEASE_INPUT_ADDRESS,
             obscureText: false,
           ),
           Container(
@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           SizedBox(height: 10.0),
           BigButton(
-              text: SString.REGISTER_TITLE,
+              text: TextString.REGISTER_TITLE,
               onPressed: () {
                 if (checkInput()) {
                   this.register();
@@ -153,16 +153,16 @@ class _RegisterPageState extends State<RegisterPage> {
   /// 检查输入操作
   bool checkInput() {
     if (userNameController.text.length == 0) {
-      MessageWidget.show(SString.PLEASE_INPUT_NAME);
+      MessageWidget.show(TextString.PLEASE_INPUT_NAME);
       return false;
     } else if (mobileController.text.length == 0) {
-      MessageWidget.show(SString.PLEASE_INPUT_MOBILE);
+      MessageWidget.show(TextString.PLEASE_INPUT_MOBILE);
       return false;
     } else if (pwdController.text.length == 0) {
-      MessageWidget.show(SString.PLEASE_INPUT_PWD);
+      MessageWidget.show(TextString.PLEASE_INPUT_PWD);
       return false;
     } else if (addressController.text.length == 0) {
-      MessageWidget.show(SString.ADDRESS);
+      MessageWidget.show(TextString.ADDRESS);
       return false;
     }
     return true;
@@ -180,13 +180,13 @@ class _RegisterPageState extends State<RegisterPage> {
         await HttpUtil().post(ApiUrl.USER_REGISTER, params: formData);
     if (response.data['code'] == 0) {
       UserModel model = UserModel.fromJson(response['data']);
-      MessageWidget.show(SString.REGISTER_SUCCESS);
+      MessageWidget.show(TextString.REGISTER_SUCCESS);
       userNameController.text = "";
       mobileController.text = "";
       pwdController.text = "";
       addressController.text = "";
     } else {
-      MessageWidget.show(SString.REGISTER_FAILED);
+      MessageWidget.show(TextString.REGISTER_FAILED);
     }
   }
 }

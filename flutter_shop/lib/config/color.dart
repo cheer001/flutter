@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class SColor {
+class ShopColor {
   //默认主要颜色
   static const Color PRIMARY_COLOR = Colors.green;
   //刷新文本颜色
