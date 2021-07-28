@@ -30,8 +30,6 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    print("首页刷新...");
-
     initData();
   }
 

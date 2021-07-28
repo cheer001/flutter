@@ -14,7 +14,6 @@ class DetailInfo extends StatefulWidget {
 class _DetailInfoState extends State<DetailInfo> {
   @override
   Widget build(BuildContext context) {
-    print('image: ${widget.goodDetailModel!.images}');
     return widget.goodDetailModel != null
         ? Container(
             color: Colors.white,

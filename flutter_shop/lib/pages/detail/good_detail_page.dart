@@ -29,7 +29,7 @@ class _GoodDetailPageState extends State<GoodDetailPage> {
     var param = {'id': widget.goodId};
     var response = await HttpUtil().get(ApiUrl.GOOD_DETAIL, params: param);
     this.setState(() {
-      goodDetailModel = GoodDetailModel.fromJson(response.data['data']);
+      goodDetailModel = GoodDetailModel.fromJson(response['data']);
     });
   }
 

@@ -24,7 +24,6 @@ class _CategorySecondState extends State<CategorySecond> {
   void initState() {
     super.initState();
     Call.addCallBack(Notify.REFRESH_SECOND_CATEGORY, this.refreshCategory);
-    print("分类页详情...");
   }
 
   refreshCategory(data) {

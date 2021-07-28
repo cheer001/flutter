@@ -58,7 +58,6 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
     super.initState();
     controller = EasyRefreshController();
     scrollController = ScrollController();
-    print("分类商品列表页。。。");
     getGoodList();
   }
 
@@ -72,9 +71,8 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
     };
     var response =
         await HttpUtil().get(ApiUrl.CATEGORY_GOOD_LIST, params: param);
-    print(response.data['data']);
     CategoryGoodListModel model =
-        CategoryGoodListModel.fromJson(response.data['data']);
+        CategoryGoodListModel.fromJson(response['data']);
     this.setState(() {
       goodList = model.categoryGoodList;
       noMoreData = false;

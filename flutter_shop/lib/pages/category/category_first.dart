@@ -23,7 +23,6 @@ class _CategoryFirstState extends State<CategoryFirst> {
   @override
   void initState() {
     super.initState();
-    print("分类页刷新...");
     getFirstCategory();
   }
 
@@ -66,7 +65,6 @@ class _CategoryFirstState extends State<CategoryFirst> {
         this.setState(() {
           firstCategoryId = list[index].id!;
         });
-        print(firstCategoryId);
         // 刷新一级菜单选中的页面
         Call.dispath(
           Notify.REFRESH_SECOND_CATEGORY,

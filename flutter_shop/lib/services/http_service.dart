@@ -22,7 +22,6 @@ class HttpService {
 
     try {
       httpClient = HttpClient();
-      print(url);
       request = await httpClient.getUrl(Uri.parse(url));
       setHeader(request);
       response = await request.close();
@@ -48,8 +47,6 @@ class HttpService {
 
     try {
       httpClient = HttpClient();
-      print('url: $url');
-      print('param: $param');
       request = await httpClient.postUrl(Uri.parse(url));
 
       setHeader(request);

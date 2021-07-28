@@ -20,7 +20,6 @@ class _HomeGoodState extends State<HomeGood> {
     double imageWidth = deviceWidth * 110.0 / 360;
 
     List<Widget> listWidget = productList.map((item) {
-      print(item);
       var bgColor = ColorUtil.string2Color('#f8f8f8');
       return item != null
           ? InkWell(
