@@ -193,7 +193,7 @@ class HttpUtil {
     try {
       Response response = await dio.post(path, data: params);
       EasyLoading.dismiss();
-      return response;
+      return response.data;
     } on DioError catch (e) {
       throw createErrorEntity(e);
     }

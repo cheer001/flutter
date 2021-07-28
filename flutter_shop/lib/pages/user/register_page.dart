@@ -178,7 +178,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
     var response =
         await HttpUtil().post(ApiUrl.USER_REGISTER, params: formData);
-    if (response.data['code'] == 0) {
+    if (response['code'] == 0) {
+      /// TODO 注册后的需求
       UserModel model = UserModel.fromJson(response['data']);
       MessageWidget.show(TextString.REGISTER_SUCCESS);
       userNameController.text = "";
@@ -186,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
       pwdController.text = "";
       addressController.text = "";
     } else {
-      MessageWidget.show(TextString.REGISTER_FAILED);
+      MessageWidget.show(response['message']);
     }
   }
 }

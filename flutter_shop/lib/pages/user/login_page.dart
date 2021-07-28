@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
     };
     var response = await HttpUtil().post(ApiUrl.USER_LOGIN, params: formData);
     if (response['code'] == 0) {
-      UserModel model = UserModel.fromJson(response.data['data']);
+      UserModel model = UserModel.fromJson(response['data']);
       MessageWidget.show(TextString.LOGIN_SUCCESS);
       await TokenUtil.saveLoginInfo(model);
       var data = {
