@@ -34,7 +34,7 @@ class HomeCategory extends StatelessWidget {
     return Container(
       color: Colors.white,
       margin: EdgeInsets.only(top: 10.0),
-      height: ScreenUtil().setHeight(320),
+      height: ScreenUtil().setHeight(350),
       padding: EdgeInsets.all(3.0),
       child: GridView.builder(
           physics: NeverScrollableScrollPhysics(),
@@ -43,7 +43,7 @@ class HomeCategory extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
             mainAxisSpacing: ScreenUtil().setWidth(10.0),
-            crossAxisSpacing: ScreenUtil().setWidth(10.0),
+            crossAxisSpacing: ScreenUtil().setHeight(1.0),
           ),
           itemBuilder: (BuildContext context, int index) {
             return categoryItem(context, categories[index]);

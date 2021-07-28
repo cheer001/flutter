@@ -66,7 +66,7 @@ class DetailButtons extends StatelessWidget {
       'good_price': this.goodDetailModel?.price,
       'good_image': this.goodDetailModel?.images?.split(',')[0],
     };
-    var response = await HttpUtil().post(ApiUrl.CART_ADD, data);
+    var response = await HttpUtil().post(ApiUrl.CART_ADD, params: data);
     print(response);
     if (response.data['code'] == 0) {
       MessageWidget.show(SString.ADD_SUCCESS);

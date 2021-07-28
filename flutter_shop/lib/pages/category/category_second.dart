@@ -5,6 +5,7 @@ import 'package:flutter_shop/call/notify.dart';
 import 'package:flutter_shop/config/api_url.dart';
 import 'package:flutter_shop/model/category_model.dart';
 import 'package:flutter_shop/services/http_service.dart';
+import 'package:flutter_shop/utils/http_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 
 class CategorySecond extends StatefulWidget {
@@ -34,12 +35,10 @@ class _CategorySecondState extends State<CategorySecond> {
   }
 
   getFirstCategory(int id) async {
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD))
-        .get(ApiUrl.CATEGORY_SECOND, queryParameters: {'pid': id});
-    print('secondList--->');
-    print(response.data["data"]['list']);
-    CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
-    if (model.categoryList != null) {
+    var response =
+        await HttpUtil().get(ApiUrl.CATEGORY_SECOND, params: {'pid': id});
+    CategoryListModel model = CategoryListModel.fromJson(response["data"]);
+    if (model.categoryList!.isNotEmpty) {
       var secondId = model.categoryList?[0].id;
       setState(() {
         secondList = model.categoryList ?? [];
@@ -67,7 +66,7 @@ class _CategorySecondState extends State<CategorySecond> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       mainAxisSpacing: 20.0,
-                      crossAxisSpacing: 20.0,
+                      crossAxisSpacing: 1.0,
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return categoryItem(secondList[index]);

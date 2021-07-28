@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/category_good_model.dart';
 import 'package:flutter_shop/services/http_service.dart';
+import 'package:flutter_shop/utils/http_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 
 class CategoryGoodListPage extends StatefulWidget {
@@ -69,10 +70,8 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
       'page_index': pageIndex,
       'page_size': pageSize
     };
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD)).get(
-      ApiUrl.CATEGORY_GOOD_LIST,
-      queryParameters: param,
-    );
+    var response =
+        await HttpUtil().get(ApiUrl.CATEGORY_GOOD_LIST, params: param);
     print(response.data['data']);
     CategoryGoodListModel model =
         CategoryGoodListModel.fromJson(response.data['data']);
@@ -176,12 +175,10 @@ class _CategoryGoodListPageState extends State<CategoryGoodListPage> {
       'page_index': pageIndex,
       'page_size': pageSize
     };
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD)).get(
-      ApiUrl.CATEGORY_GOOD_LIST,
-      queryParameters: param,
-    );
+    var response =
+        await HttpUtil().get(ApiUrl.CATEGORY_GOOD_LIST, params: param);
     CategoryGoodListModel model =
-        CategoryGoodListModel.fromJson(response.data['data']);
+        CategoryGoodListModel.fromJson(response['data']);
 
     if (model.categoryGoodList.length > 0 && model.categoryGoodList != null) {
       goodList.addAll(model.categoryGoodList);

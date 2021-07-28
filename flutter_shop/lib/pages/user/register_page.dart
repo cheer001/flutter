@@ -6,6 +6,7 @@ import 'package:flutter_shop/call/notify.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/user_model.dart';
 import 'package:flutter_shop/services/http_service.dart';
+import 'package:flutter_shop/utils/http_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 import 'package:flutter_shop/utils/token_util.dart';
 import 'package:flutter_shop/widgets/big_button.dart';
@@ -175,12 +176,10 @@ class _RegisterPageState extends State<RegisterPage> {
       'address': addressController.text.toString().trim(),
     };
 
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD)).post(
-      ApiUrl.USER_REGISTER,
-      data: formData,
-    );
+    var response =
+        await HttpUtil().post(ApiUrl.USER_REGISTER, params: formData);
     if (response.data['code'] == 0) {
-      UserModel model = UserModel.fromJson(response.data['data']);
+      UserModel model = UserModel.fromJson(response['data']);
       MessageWidget.show(SString.REGISTER_SUCCESS);
       userNameController.text = "";
       mobileController.text = "";

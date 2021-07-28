@@ -6,6 +6,7 @@ import 'package:flutter_shop/call/notify.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/user_model.dart';
 import 'package:flutter_shop/services/http_service.dart';
+import 'package:flutter_shop/utils/http_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 import 'package:flutter_shop/utils/storage_util.dart';
 import 'package:flutter_shop/utils/token_util.dart';
@@ -152,13 +153,8 @@ class _LoginPageState extends State<LoginPage> {
       'username': userNameController?.text.toString().trim(),
       'password': pwdController?.text.toString().trim(),
     };
-    print(formData);
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD)).post(
-      ApiUrl.USER_LOGIN,
-      data: formData,
-    );
-    print(response.data['code']);
-    if (response.data['code'] == 0) {
+    var response = await HttpUtil().post(ApiUrl.USER_LOGIN, params: formData);
+    if (response['code'] == 0) {
       UserModel model = UserModel.fromJson(response.data['data']);
       MessageWidget.show(SString.LOGIN_SUCCESS);
       await TokenUtil.saveLoginInfo(model);

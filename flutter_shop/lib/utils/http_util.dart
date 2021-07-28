@@ -18,31 +18,27 @@ class HttpUtil {
       connectTimeout: 5000,
       //响应流前后两次接受到数据的间隔(毫秒)
       receiveTimeout: 5000,
-      //Http请求头
-      // headers: {},
       //请求类型
       contentType: 'application/json;charset=utf-8',
-      // //期望接受相应数据的类型
-      // responseType: ResponseType.json,
+      //期望接受相应数据的类型
+      responseType: ResponseType.json,
     );
     dio = new Dio(options);
 
     //Cookie管理
     CookieJar cookieJar = CookieJar();
     dio.interceptors.add(CookieManager(cookieJar));
-    // String token = StorageUtil().getToken();
 
     //添加拦截器
     dio.interceptors.add(InterceptorsWrapper(
       // 请求之前do something...
       onRequest: (options, handler) async {
         String token = await TokenUtil.getToken();
-        if (token != null || token != "")
-          options.headers = {'Authorization': '$token'};
+        if (token.isNotEmpty) options.headers = {'Authorization': '$token'};
         handler.next(options);
       },
       // 响应之前do something...
-      onResponse: (e, handler) => e,
+      onResponse: (e, handler) => handler.next(e),
       // 错误之前do something...
       onError: (e, handler) => e,
     ));
@@ -132,19 +128,8 @@ class HttpUtil {
     token.cancel('cancelled');
   }
 
-  // /// 读取本地配置
-  // Options getAuthorizationHeader() {
-  //   late Options options;
-  //   if (token != null) {
-  //     options = Options(
-  //       headers: {'Authorization': 'Bearer $token'},
-  //     );
-  //   }
-  //   return options;
-  // }
-
   /// restful get 操作
-  Future get(String path, dynamic params) async {
+  Future get(String path, {dynamic params}) async {
     try {
       Response response = await dio.get(path, queryParameters: params);
       return response.data;
@@ -154,7 +139,7 @@ class HttpUtil {
   }
 
   /// restful post 操作
-  Future post(String path, Map<String, dynamic> params) async {
+  Future post(String path, {required Map<String, dynamic> params}) async {
     try {
       Response response = await dio.post(path, data: params);
       return response;
@@ -163,46 +148,41 @@ class HttpUtil {
     }
   }
 
-  // /// restful put 操作
-  // Future put(String path,
-  //     {dynamic params, Options? options, CancelToken? cancelToken}) async {
-  //   try {
-  //     var tokenOptions = options ?? getLocalOptions();
-  //     var response = await dio.put(path,
-  //         data: params, options: tokenOptions, cancelToken: cancelToken);
-  //     return response.data;
-  //   } on DioError catch (e) {
-  //     throw createErrorEntity(e);
-  //   }
-  // }
+  /// restful put 操作
+  Future put(String path,
+      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+    try {
+      var response =
+          await dio.put(path, data: params, cancelToken: cancelToken);
+      return response.data;
+    } on DioError catch (e) {
+      throw createErrorEntity(e);
+    }
+  }
 
-  // /// restful delete 操作
-  // Future delete(String path,
-  //     {dynamic params, Options? options, CancelToken? cancelToken}) async {
-  //   try {
-  //     var tokenOptions = options ?? getLocalOptions();
-  //     var response = await dio.delete(path,
-  //         data: params, options: tokenOptions, cancelToken: cancelToken);
-  //     return response.data;
-  //   } on DioError catch (e) {
-  //     throw createErrorEntity(e);
-  //   }
-  // }
+  /// restful delete 操作
+  Future delete(String path,
+      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+    try {
+      var response =
+          await dio.delete(path, data: params, cancelToken: cancelToken);
+      return response.data;
+    } on DioError catch (e) {
+      throw createErrorEntity(e);
+    }
+  }
 
-  // /// restful post form 表单提交操作
-  // Future postForm(String path,
-  //     {dynamic params, Options? options, CancelToken? cancelToken}) async {
-  //   try {
-  //     var tokenOptions = options ?? getLocalOptions();
-  //     var response = await dio.post(path,
-  //         data: FormData.fromMap(params),
-  //         options: tokenOptions,
-  //         cancelToken: cancelToken);
-  //     return response.data;
-  //   } on DioError catch (e) {
-  //     throw createErrorEntity(e);
-  //   }
-  // }
+  /// restful post form 表单提交操作
+  Future postForm(String path,
+      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+    try {
+      var response = await dio.post(path,
+          data: FormData.fromMap(params), cancelToken: cancelToken);
+      return response.data;
+    } on DioError catch (e) {
+      throw createErrorEntity(e);
+    }
+  }
 }
 
 // 异常处理

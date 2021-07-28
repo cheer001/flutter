@@ -8,6 +8,7 @@ import 'package:flutter_shop/config/color.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/category_model.dart';
 import 'package:flutter_shop/services/http_service.dart';
+import 'package:flutter_shop/utils/http_util.dart';
 
 class CategoryFirst extends StatefulWidget {
   CategoryFirst({Key? key}) : super(key: key);
@@ -27,11 +28,8 @@ class _CategoryFirstState extends State<CategoryFirst> {
   }
 
   getFirstCategory() async {
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD))
-        .get(ApiUrl.CATEGORY_FIRST);
-    print("firstList--->");
-    print(response.data["data"]['list']);
-    CategoryListModel model = CategoryListModel.fromJson(response.data["data"]);
+    var response = await HttpUtil().get(ApiUrl.CATEGORY_FIRST);
+    CategoryListModel model = CategoryListModel.fromJson(response["data"]);
     this.setState(() {
       firstList = model.categoryList ?? [];
       firstCategoryId = model.categoryList?[0].id ?? 0; //默认显示第一条数据

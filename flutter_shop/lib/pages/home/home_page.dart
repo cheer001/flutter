@@ -36,10 +36,9 @@ class _HomePageState extends State<HomePage>
   }
 
   initData() async {
-    var response = await Dio(BaseOptions(baseUrl: ApiUrl.URL_HEAD))
-        .get(ApiUrl.HOME_CONTENT);
+    var response = await HttpUtil().get(ApiUrl.HOME_CONTENT);
     this.setState(() {
-      _homeModel = HomeContentModel.fromJson(response.data['data']);
+      _homeModel = HomeContentModel.fromJson(response!['data']);
     });
   }
 
